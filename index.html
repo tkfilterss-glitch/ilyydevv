@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A little something for you ♡</title>
+<style>
+:root{--paper:#fff8ed;--rose:#d99b91;--deep:#633f3b;--ink:#46302d;--pink:#f4d7d0;--muted:#8e6b65}
+*{box-sizing:border-box}body{margin:0;background:#f4e6d8;color:var(--ink);font-family:Georgia,'Times New Roman',serif}
+button,input,textarea{font:inherit}button{cursor:pointer;border:1px solid #d8aaa0;border-radius:999px;padding:12px 22px;background:#f1c8be;color:#4e302d;box-shadow:0 4px 0 #dfb2a8}
+button:hover{filter:brightness(.98);transform:translateY(-1px)}.wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;position:relative;overflow:hidden}
+.wrap:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at 15% 10%,#fff9e9aa,transparent 40%),radial-gradient(ellipse at 90% 80%,#dba69a55,transparent 45%)}
+.panel{position:relative;width:min(760px,100%);min-height:490px;background:var(--paper);border:1px solid #e5cbbb;box-shadow:0 16px 50px #80594b24;padding:clamp(24px,6vw,56px);text-align:center;border-radius:5px}
+.panel:after{content:"♡  ✿  ♡";display:block;color:#c78c80;letter-spacing:14px;margin-top:28px;font-size:15px}
+.eyebrow{font:12px Arial,sans-serif;letter-spacing:3px;text-transform:uppercase;color:#b46c69}
+h1,h2{font-weight:normal}h1{font-size:clamp(36px,8vw,62px);font-style:italic;margin:18px 0}h2{font-size:clamp(27px,6vw,40px);font-style:italic;margin:12px 0 22px}
+p{font-size:18px;line-height:1.75}.small{font-size:14px;color:var(--muted)}.heart{font-size:32px;color:#c9817b}.hide{display:none!important}
+input,textarea{width:100%;border:1px solid #e6c8be;background:#fffaf4;padding:14px;border-radius:12px;color:var(--ink);margin:8px 0 14px}textarea{min-height:220px;resize:vertical}
+.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:24px}.ghost{background:transparent;box-shadow:none}
+.gift{font-size:100px;animation:bob 2s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-7px)}}
+.note{background:#fffaf2;border:1px solid #ead4c5;padding:clamp(20px,5vw,42px);text-align:left;box-shadow:4px 6px 0 #efdcd0;white-space:pre-wrap;line-height:1.8;font-size:17px}
+.wishes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;text-align:left}.wish{background:#f8e3dc;border:1px solid #efcfc6;padding:17px;border-radius:8px;line-height:1.5}.wish b{display:block;color:#b46c69;margin-bottom:7px;font-weight:normal}
+.scratch-wrap{width:min(440px,100%);margin:20px auto;position:relative}.reveal{background:#f7e1da;padding:32px 18px;border-radius:12px;min-height:150px;display:grid;place-items:center;border:1px solid #e3b9af;font-size:20px;line-height:1.6}
+canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;border-radius:12px;cursor:crosshair}
+.audio-row{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap}.photo-grid{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:22px}.photo{background:white;padding:9px 9px 28px;box-shadow:0 6px 16px #6e4a3d20;transform:rotate(-3deg);width:145px}.photo:nth-child(2){transform:rotate(3deg)}.photo img{width:100%;height:130px;object-fit:cover;background:#f4e0d6}.photo input{font-size:11px;padding:5px}
+.progress{height:4px;background:#efd8d0;margin:-4px 0 28px;border-radius:9px;overflow:hidden}.bar{height:100%;width:0;background:#d28e85;transition:width .3s}
+footer{font-size:12px;color:#a17c74;margin-top:18px}
+@media(max-width:520px){.panel{min-height:0;padding:26px 20px}.wishes{grid-template-columns:1fr}.gift{font-size:80px}p{font-size:16px}}
+</style>
+</head>
+<body>
+<div class="wrap"><main class="panel">
+<div class="progress"><div class="bar" id="bar"></div></div>
+<section class="page" id="p0">
+<div class="eyebrow">a little gift, made with love</div><div class="gift">🎁</div>
+<h1>a little something<br>just for you ♡</h1>
+<p>not just a gift, but a little piece of my heart.</p>
+<div class="actions"><button onclick="go(1)">Open your gift ♡</button></div>
+</section>
+<section class="page hide" id="p1">
+<div class="eyebrow">just between us</div><h2>one tiny secret…</h2><div class="heart">♡</div>
+<p>Enter the little code to unlock your surprises.</p>
+<input id="code" placeholder="your secret code" autocomplete="off">
+<p class="small">Tip: change the code in the website file if you want a different one.</p>
+<div class="actions"><button onclick="unlock()">Unlock my gift</button><button class="ghost" onclick="go(2)">Skip for now</button></div><p id="codeMsg" class="small"></p>
+</section>
+<section class="page hide" id="p2">
+<div class="eyebrow">a letter for you</div><h2>hi baby ♡</h2>
+<div class="note" id="letter">hi baby ♡
+
+i made this little thing just for you, so you could have something that reminds you how special you are to me. i might not always know how to put my feelings into words, but i'm really grateful to have you in my life. you make my ordinary days feel a little more special just by being in them. i hope this makes you smile, because you deserve all the little things that make you happy. no matter how far apart we are, i hope you always feel a little closer to me whenever you think of us.
+
+i love you, always. ♡</div>
+<div class="actions"><button onclick="go(3)">Next, baby →</button></div>
+</section>
+<section class="page hide" id="p3">
+<div class="eyebrow">little things i wish for you</div><h2>six little wishes ♡</h2>
+<div class="wishes">
+<div class="wish"><b>01 ♡</b>I wish you happiness, even on the days that feel a little hard.</div>
+<div class="wish"><b>02 ♡</b>I wish you get to achieve your dreams and feel proud of how far you've come.</div>
+<div class="wish"><b>03 ♡</b>I wish life feels gentle with you, and that you never feel you have to carry everything alone.</div>
+<div class="wish"><b>04 ♡</b>I wish you could see yourself through my eyes, even just for a moment.</div>
+<div class="wish"><b>05 ♡</b>I wish you never have to question your worth, and that life gives back all the love and kindness you give to others.</div>
+<div class="wish"><b>06 ♡</b>I wish that even on your hardest days, you never forget how loved, valued, and important you are.</div>
+</div><div class="actions"><button onclick="go(4)">One more surprise →</button></div>
+</section>
+<section class="page hide" id="p4">
+<div class="eyebrow">a tiny surprise</div><h2>a little piece of my heart ♡</h2><p>scratch the card to reveal your message.</p>
+<div class="scratch-wrap"><div class="reveal">just a little reminder that you're loved more than you know, baby. ♡</div><canvas id="scratch"></canvas></div>
+<p class="small">Use your finger or mouse to scratch away the pink layer.</p><div class="actions"><button onclick="go(5)">Next →</button></div>
+</section>
+<section class="page hide" id="p5">
+<div class="eyebrow">press play, if you like</div><h2>a song for you ♡</h2>
+<p>For all the little moments that made us, and all the ones still waiting for us.</p>
+<div class="audio-row"><input type="file" id="songFile" accept="audio/*" aria-label="Choose a song from your device"></div><audio id="audio" controls class="hide" style="width:100%;margin-top:12px"></audio><p class="small">Choose an audio file saved on your device. The song file itself isn't included in this page.</p>
+<div class="actions"><button onclick="go(6)">Keep going →</button></div>
+</section>
+<section class="page hide" id="p6">
+<div class="eyebrow">little memories</div><h2>our tiny corner of the world ♡</h2>
+<p>Add photos if you'd like. They stay in your browser while this page is open; they aren't uploaded anywhere.</p>
+<div class="photo-grid">
+<div class="photo"><img id="img1" alt="your photo"><input type="file" accept="image/*" onchange="loadPhoto(event,'img1')"><div class="small">a little memory</div></div>
+<div class="photo"><img id="img2" alt="your photo"><input type="file" accept="image/*" onchange="loadPhoto(event,'img2')"><div class="small">one for us</div></div>
+</div><div class="actions"><button onclick="go(7)">Last little note →</button></div>
+</section>
+<section class="page hide" id="p7">
+<div class="eyebrow">before you go</div><div class="heart">♡</div><h1>that's all for now…</h1>
+<p>but never all the love.</p><p>thank you for being you, for making my ordinary days brighter, and for being a part of my story.</p><p>i hope you always know how much you mean to me. no matter the distance, i'm cheering for you and keeping a little space for you in my heart. ♡</p>
+<div class="actions"><button onclick="go(0)">Read it again ♡</button><button class="ghost" onclick="window.print()">Save / Print</button></div>
+</section>
+<footer>made with love, just for you ♡</footer>
+</main></div>
+<script>
+const TOTAL=8;
+function go(n){document.querySelectorAll('.page').forEach((p,i)=>p.classList.toggle('hide',i!==n));document.getElementById('bar').style.width=(n/(TOTAL-1)*100)+'%';window.scrollTo({top:0,behavior:'smooth'});if(n===4)setTimeout(setupScratch,80)}
+function unlock(){const v=document.getElementById('code').value.trim().toLowerCase();if(v==='myfavourite'||v==='my favourite'||v==='baby'||v==='love'){go(2)}else{document.getElementById('codeMsg').textContent='That code didn’t work — try “myfavourite” or skip ♡'}}
+function loadPhoto(e,id){const f=e.target.files[0];if(f)document.getElementById(id).src=URL.createObjectURL(f)}
+document.getElementById('songFile').addEventListener('change',e=>{const f=e.target.files[0];if(f){const a=document.getElementById('audio');a.src=URL.createObjectURL(f);a.classList.remove('hide');a.load()}})
+let scratchReady=false;
+function setupScratch(){if(scratchReady)return;scratchReady=true;const c=document.getElementById('scratch'),ctx=c.getContext('2d');const box=c.getBoundingClientRect();c.width=box.width*devicePixelRatio;c.height=box.height*devicePixelRatio;ctx.scale(devicePixelRatio,devicePixelRatio);ctx.fillStyle='#cf8f87';ctx.fillRect(0,0,box.width,box.height);ctx.fillStyle='#f7d9d1';ctx.font='18px Georgia';ctx.textAlign='center';ctx.fillText('scratch here ♡',box.width/2,box.height/2);ctx.globalCompositeOperation='destination-out';let down=false;
+function erase(e){if(!down)return;const r=c.getBoundingClientRect();const x=(e.clientX-r.left),y=(e.clientY-r.top);ctx.beginPath();ctx.arc(x,y,22,0,Math.PI*2);ctx.fill()}
+c.addEventListener('pointerdown',e=>{down=true;c.setPointerCapture(e.pointerId);erase(e)});c.addEventListener('pointermove',erase);c.addEventListener('pointerup',()=>down=false);c.addEventListener('pointercancel',()=>down=false)}
+go(0);
+</script>
+</body></html>
